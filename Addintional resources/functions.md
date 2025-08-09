@@ -172,22 +172,106 @@ Python has several built-in functions that work with other functions and iterabl
 | **`zip(*iterables)`**                             | Combine iterables element-wise            | `zip(names, ages)`                      |
 | **`enumerate(iterable)`**                         | Pair each element with an index           | `enumerate(items)`                      |
 
-**Example – Filtering Published Posts:**
+
+**1) `map(func, iterable)`** – Transform each element
 
 ```python
-posts = [
-    {"title": "Post 1", "published": True},
-    {"title": "Post 2", "published": False}
-]
-
-published_posts = list(filter(lambda p: p["published"], posts))
-print(published_posts)
+numbers = [1, 2, 3, 4]
+doubled = list(map(lambda x: x * 2, numbers))
+print(doubled)  # [2, 4, 6, 8]
 ```
 
-**Output:**
+---
+
+**2) `filter(func, iterable)`** – Keep only matching elements
 
 ```python
-[{'title': 'Post 1', 'published': True}]
+numbers = [-3, -1, 0, 2, 5]
+positive_nums = list(filter(lambda x: x > 0, numbers))
+print(positive_nums)  # [2, 5]
+```
+
+---
+
+**3) `reduce(func, iterable)`** – Combine into one value
+
+*(Needs to be imported from `functools`)*
+
+```python
+from functools import reduce
+
+numbers = [1, 2, 3, 4]
+total = reduce(lambda a, b: a + b, numbers)
+print(total)  # 10
+```
+
+---
+
+**4) `sorted(iterable, key=func)`** – Sort items
+
+**Ascending order:**
+
+```python
+users = [
+    {"name": "Alice", "age": 34},
+    {"name": "Bob", "age": 28}
+]
+sorted_users_asc = sorted(users, key=lambda u: u["age"])
+print(sorted_users_asc)
+# [{'name': 'Bob', 'age': 28}, {'name': 'Alice', 'age': 34}]
+```
+
+**Descending order:**
+
+```python
+sorted_users_desc = sorted(users, key=lambda u: u["age"], reverse=True)
+print(sorted_users_desc)
+# [{'name': 'Alice', 'age': 34}, {'name': 'Bob', 'age': 28}]
+```
+
+---
+
+**5) `any(iterable)`** – Check if at least one is truthy
+
+```python
+nums = [0, 0, 3]
+print(any(nums))  # True (because 3 is truthy)
+```
+
+---
+
+**6) `all(iterable)`** – Check if all are truthy
+
+```python
+nums = [1, 2, 3]
+print(all(nums))  # True (all non-zero)
+```
+
+---
+
+**7) `zip(*iterables)`** – Combine iterables element-wise
+
+```python
+names = ["Alice", "Bob", "Charlie"]
+ages = [25, 30, 35]
+
+combined = list(zip(names, ages))
+print(combined)
+# [('Alice', 25), ('Bob', 30), ('Charlie', 35)]
+```
+
+---
+
+**8) `enumerate(iterable)`** – Add index to elements
+
+```python
+fruits = ["apple", "banana", "cherry"]
+for index, fruit in enumerate(fruits, start=1):
+    print(index, fruit)
+
+# 1 apple
+# 2 banana
+# 3 cherry
 ```
 
 ---
