@@ -260,6 +260,14 @@ print(combined)
 # [('Alice', 25), ('Bob', 30), ('Charlie', 35)]
 ```
 
+```python
+names = ["Alice", "Bob", "Charlie"]
+ages = [25, 30, 35]
+cities = ["New York", "London", "Paris"]
+
+combined = list(zip(names, ages, cities))
+print(combined)
+```
 ---
 
 **8) `enumerate(iterable)`** – Add index to elements
